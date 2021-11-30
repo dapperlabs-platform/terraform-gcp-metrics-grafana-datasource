@@ -54,7 +54,9 @@ module "gcp-metrics-grafana-datasource" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | Project name where service account will be created. | `string` | n/a | yes |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | (Required) Project name where service account will be created. | `string` | `""` | no |
+| <a name="input_service_account_create"></a> [service\_account\_create](#input\_service\_account\_create) | (Required) Create a new service account | `bool` | `false` | no |
+| <a name="input_service_account_name"></a> [service\_account\_name](#input\_service\_account\_name) | (Required) Name for service account | `string` | `""` | no |
 
 ## Outputs
 
