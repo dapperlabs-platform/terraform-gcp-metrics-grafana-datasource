@@ -9,7 +9,7 @@ module "gcp-metrics-grafana-datasource" {
   source                 = "github.com/dapperlabs-platform/terraform-gcp-metrics-grafana-datasource?ref=tag"
   project_name           = "project-name-goes-here"
   service_account_create = true
-  service_account_name   = new-metrics-reader
+  service_account_name   = "new-metrics-reader"
 }
 ```
 
@@ -20,7 +20,33 @@ module "gcp-metrics-grafana-datasource" {
   source                 = "github.com/dapperlabs-platform/terraform-gcp-metrics-grafana-datasource?ref=tag"
   project_name           = "project-name-goes-here"
   service_account_create = false
-  service_account_name   = metrics-reader
+  service_account_name   = "metrics-reader"
+}
+```
+
+If granting access to an entire GCP folder - with an existing service account from a specific project:
+
+```hcl
+module "gcp-metrics-grafana-datasource" {
+  source                   = "github.com/dapperlabs-platform/terraform-gcp-metrics-grafana-datasource?ref=tag"
+  project_name             = "project-name-goes-here"
+  service_account_create   = false
+  service_account_name     = "metrics-reader"
+  grant_folder_permissions = true
+  folder_id                = "folders/1234567788888"
+}
+```
+
+If granting access to an entire GCP folder - with an new service account created in a specific project:
+
+```hcl
+module "gcp-metrics-grafana-datasource" {
+  source                   = "github.com/dapperlabs-platform/terraform-gcp-metrics-grafana-datasource?ref=tag"
+  project_name             = "project-name-goes-here"
+  service_account_create   = true
+  service_account_name     = "metrics-reader"
+  grant_folder_permissions = true
+  folder_id                = "folders/1234567788888"
 }
 ```
 
@@ -42,18 +68,22 @@ module "gcp-metrics-grafana-datasource" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_service_account"></a> [service\_account](#module\_service\_account) | github.com/dapperlabs-platform/terraform-google-iam-service-account | v1.0.0 |
+| <a name="module_folder_service_account"></a> [folder\_service\_account](#module\_folder\_service\_account) | github.com/dapperlabs-platform/terraform-google-iam-service-account | v1.0.0 |
+| <a name="module_project_service_account"></a> [project\_service\_account](#module\_project\_service\_account) | github.com/dapperlabs-platform/terraform-google-iam-service-account | v1.0.0 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [grafana_data_source.stackdriver](https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/data_source) | resource |
+| [grafana_data_source.stackdriver_folder](https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/data_source) | resource |
+| [grafana_data_source.stackdriver_project](https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/data_source) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_folder_id"></a> [folder\_id](#input\_folder\_id) | (Optional) ID for the Folder | `string` | `""` | no |
+| <a name="input_grant_folder_permissions"></a> [grant\_folder\_permissions](#input\_grant\_folder\_permissions) | (Optional) Grant metrics permissions to an entire folder | `bool` | `false` | no |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | (Required) Project name where service account will be created. | `string` | `""` | no |
 | <a name="input_service_account_create"></a> [service\_account\_create](#input\_service\_account\_create) | (Required) Create a new service account | `bool` | `false` | no |
 | <a name="input_service_account_name"></a> [service\_account\_name](#input\_service\_account\_name) | (Required) Name for service account | `string` | `""` | no |
