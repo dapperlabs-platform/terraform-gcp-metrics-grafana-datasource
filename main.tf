@@ -18,7 +18,7 @@ terraform {
 module "service_account" {
   source                 = "github.com/dapperlabs-platform/terraform-google-iam-service-account?ref=v1.0.0"
   project_id             = var.project_name
-  name                   = var.service_account_email
+  name                   = var.service_account_name
   generate_key           = var.service_account_create // Don't generate a key if we aren't creating a service account.
   service_account_create = var.service_account_create // Are we actually creating a service account?
   iam_project_roles = {

@@ -2,10 +2,25 @@
 
 This module creates a Grafana Datasource from a Google Cloud Service Account key.
 
+If creating a new Service Account:
+
 ```hcl
 module "gcp-metrics-grafana-datasource" {
-  source       = "github.com/dapperlabs-platform/terraform-gcp-metrics-grafana-datasource?ref=tag"
-  project_name = "project-name-goes-here"
+  source                 = "github.com/dapperlabs-platform/terraform-gcp-metrics-grafana-datasource?ref=tag"
+  project_name           = "project-name-goes-here"
+  service_account_create = true
+  service_account_name   = new-metrics-reader
+}
+```
+
+If using an existing Service Account:
+
+```hcl
+module "gcp-metrics-grafana-datasource" {
+  source                 = "github.com/dapperlabs-platform/terraform-gcp-metrics-grafana-datasource?ref=tag"
+  project_name           = "project-name-goes-here"
+  service_account_create = false
+  service_account_name   = metrics-reader
 }
 ```
 

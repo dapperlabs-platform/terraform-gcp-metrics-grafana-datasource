@@ -10,8 +10,8 @@ variable "service_account_create" {
   default     = false
 }
 
-variable "service_account_email" {
-  description = "(Required) Email address for service account"
+variable "service_account_name" {
+  description = "(Required) Name for service account"
   type        = string
   default     = ""
 }
