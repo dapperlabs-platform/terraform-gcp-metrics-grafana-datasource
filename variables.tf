@@ -10,6 +10,12 @@ variable "service_account_create" {
   default     = false
 }
 
+variable "grafana_datasource_name" {
+  description = "(Required) Name for Grafana Datasource - only required when service_account_create is true"
+  type        = string
+  default     = ""
+}
+
 variable "service_account_name" {
   description = "(Required) Name for service account"
   type        = string

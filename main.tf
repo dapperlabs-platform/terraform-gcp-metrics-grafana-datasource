@@ -52,7 +52,7 @@ resource "grafana_data_source" "stackdriver_project" {
     module.project_service_account
   ]
   type = "stackdriver"
-  name = "${var.project_name}-gcp-metrics"
+  name = var.grafana_datasource_name
 
   json_data {
     token_uri           = "https://oauth2.googleapis.com/token"
@@ -73,7 +73,7 @@ resource "grafana_data_source" "stackdriver_folder" {
     module.folder_service_account
   ]
   type = "stackdriver"
-  name = "${var.project_name}-gcp-metrics"
+  name = var.grafana_datasource_name
 
   json_data {
     token_uri           = "https://oauth2.googleapis.com/token"
