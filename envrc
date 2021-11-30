@@ -1,0 +1,8 @@
+export GOOGLE_APPLICATION_CREDENTIALS=/path/to/key.json
+export GRAFANA_AUTH=LONGRANDOMSTRINGGOESHERE
+export GRAFANA_URL=https://example.grafana.net
+export TF_VAR_project_name=gcp-project-name-goes-here
+export TF_VAR_service_account_create=false
+export TF_VAR_service_account_name=name-of-service-account
+export TF_VAR_grant_folder_permissions=false
+export TF_VAR_folder_id=folders/1234567889999
