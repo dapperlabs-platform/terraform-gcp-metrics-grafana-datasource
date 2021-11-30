@@ -18,7 +18,7 @@ terraform {
 // If we're just granting access to a project.
 module "project_service_account" {
   count                  = var.grant_folder_permissions ? 0 : 1
-  source                 = "github.com/dapperlabs-platform/terraform-google-iam-service-account?ref=v1.0.0"
+  source                 = "github.com/dapperlabs-platform/terraform-google-iam-service-account?ref=v1.1.0"
   project_id             = var.project_name
   name                   = var.service_account_name
   generate_key           = var.service_account_create // Don't generate a key if we aren't creating a service account.
@@ -33,7 +33,7 @@ module "project_service_account" {
 // If we're granting access to an entire folder.
 module "folder_service_account" {
   count                  = var.grant_folder_permissions ? 1 : 0
-  source                 = "github.com/dapperlabs-platform/terraform-google-iam-service-account?ref=v1.0.0"
+  source                 = "github.com/dapperlabs-platform/terraform-google-iam-service-account?ref=v1.1.0"
   project_id             = var.project_name
   name                   = var.service_account_name
   generate_key           = var.service_account_create // Don't generate a key if we aren't creating a service account.
