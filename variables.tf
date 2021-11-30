@@ -15,3 +15,15 @@ variable "service_account_name" {
   type        = string
   default     = ""
 }
+
+variable "grant_folder_permissions" {
+  description = "(Optional) Grant metrics permissions to an entire folder"
+  type        = bool
+  default     = false
+}
+
+variable "folder_id" {
+  description = "(Optional) ID for the Folder"
+  type        = string
+  default     = ""
+}
