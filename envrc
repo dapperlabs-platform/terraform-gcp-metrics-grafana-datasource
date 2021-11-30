@@ -1,0 +1,4 @@
+export GOOGLE_APPLICATION_CREDENTIALS=/path/to/key.json
+export TF_VAR_project_name=gcp-project-name-goes-here
+export GRAFANA_AUTH=LONGRANDOMSTRINGGOESHERE
+export GRAFANA_URL=https://example.grafana.net
