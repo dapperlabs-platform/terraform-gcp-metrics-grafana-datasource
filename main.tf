@@ -43,6 +43,11 @@ module "folder_service_account" {
       "roles/monitoring.viewer",
     ]
   }
+  iam_project_roles = {
+    "${var.project_name}" = [
+      "roles/monitoring.viewer",
+    ]
+  }
 }
 
 // If we're just granting access to a project AND creating the service account.
