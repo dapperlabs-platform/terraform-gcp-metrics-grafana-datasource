@@ -58,7 +58,7 @@ resource "grafana_data_source" "stackdriver_project" {
     token_uri           = "https://oauth2.googleapis.com/token"
     authentication_type = "jwt"
     default_project     = var.project_name
-    client_email        = module.project_service_account[0].iam_email
+    client_email        = module.project_service_account[0].email
   }
 
   secure_json_data {
@@ -79,7 +79,7 @@ resource "grafana_data_source" "stackdriver_folder" {
     token_uri           = "https://oauth2.googleapis.com/token"
     authentication_type = "jwt"
     default_project     = var.project_name
-    client_email        = module.folder_service_account[0].iam_email
+    client_email        = module.folder_service_account[0].email
   }
 
   secure_json_data {
