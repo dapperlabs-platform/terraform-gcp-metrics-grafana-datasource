@@ -88,6 +88,6 @@ resource "grafana_data_source" "stackdriver_folder" {
   }
 
   secure_json_data {
-    private_key = module.folder_service_account[0].key.private_key
+    private_key = jsondecode(base64decode(nonsensitive(module.folder_service_account[0].key.private_key))).private_key
   }
 }
